@@ -1916,14 +1916,14 @@ window.__require = function e(t, n, o) {
                 // var elem = document.getElementById("adsResult");
                 // elem.style.display = 'block';
 
-                var adRestart = document.getElementById("adsResult");
-                adRestart.addEventListener('mousedown', adButtonClickRestart);
-                function adButtonClickRestart(){
+              //  var adRestart = document.getElementById("adsResult");
+                //adRestart.addEventListener('mousedown', adButtonClickRestart);
+               // function adButtonClickRestart(){
 
-                    setTimeout(() => {
-                        location.reload();
-                      }, 2000);
-                }
+                 //   setTimeout(() => {
+                   //     location.reload();
+                     // }, 2000);
+                //}
 
                 
                 var e = this,
@@ -2093,7 +2093,7 @@ window.__require = function e(t, n, o) {
                     var GameMySuikaScoreResult = document.getElementById("GameMySuikaScoreResult");
                     
                     const ip = GameMyScoreResult.dataset.ip
-                    const hostUrl = location.hostname === "localhost" || location.hostname === "127.0.0.1" ? 'http://localhost:8000' : "https://suika-game.com"
+                    const hostUrl = location.hostname === "localhost" || location.hostname === "127.0.0.1" ? 'http://localhost:3000' : "https://xk9hdt8m8w.ap-southeast-2.awsapprunner.com"
                     const headers = {
                         'Content-type': 'Application/json',
                         'Accept': 'Application/json',
