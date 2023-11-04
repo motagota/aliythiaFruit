@@ -252,65 +252,6 @@ allCards.forEach(function (el) {
 });
 
 
-    var rewardedSlot;
-    var fruitsRefreshRewordInfoButton = document.getElementById("fruitsRefreshRewordInfoButton");
-    var fruitsRefreshRewordInfo = document.getElementById("fruitsRefreshRewordInfo");
-    var fruitsRefreshReword = document.getElementById("fruitsRefreshReword");
-    var fruitsRefreshRewordCloseButton = document.getElementById("fruitsRefreshRewordCloseButton");
-
-    googletag.cmd.push(() => {
-
-        if (window.matchMedia && window.matchMedia('(max-width: 431px)').matches) {
-            rewardedSlot = googletag.defineOutOfPageSlot('/62532913,22995500819/s_suika-game_1x1_rewarded-video_31251', googletag.enums.OutOfPageFormat.REWARDED).addService(googletag.pubads());
-            console.log('sp')
-        } else {
-            rewardedSlot = googletag.defineOutOfPageSlot('/62532913,22995500819/p_suika-game_1x1_rewarded-video_31252', googletag.enums.OutOfPageFormat.REWARDED).addService(googletag.pubads());
-            console.log('pc')
-        }
-        googletag.enableServices();
-    
-        googletag.pubads().addEventListener('rewardedSlotReady', function(evt) {
-            fruitsRefreshRewordInfoButton.style.display = 'block';
-            fruitsRefreshReword.addEventListener('mousedown', fruitsRefreshRewordAction);
-
-            function fruitsRefreshRewordAction() {
-                evt.makeRewardedVisible();
-                console.log(1)
-            }
-        });
-
-        googletag.pubads().addEventListener('rewardedSlotGranted', function(evt) {
-            console.log('報酬が提供されました。' + JSON.stringify(evt.payload));
-            MainManger.reward()
-            fruitsRefreshRewordInfo.style.display = 'none';
-            fruitsRefreshRewordInfoButton.style.display = 'none';
-        });
-    
-        googletag.pubads().addEventListener('rewardedSlotClosed', function(evt) {
-            console.log('ユーザーにより閉じられました。');
-            // fruitsRefreshRewordInfoButton.style.display = 'block';
-                // fruitsRefreshRewordInfo.style.display = 'block';
-                // fruitsRefreshRewordInfoButton.style.display = 'block';
-            googletag.destroySlots([rewardedSlot]);
-
-        });
-
-        googletag.display(rewardedSlot);
-    });
-
-
-    fruitsRefreshRewordInfoButton.addEventListener('mousedown', fruitsRefreshRewordInfoButtonAction);
-    function fruitsRefreshRewordInfoButtonAction(){
-        fruitsRefreshRewordInfo.style.display = 'block';
-        fruitsRefreshRewordInfoButton.style.display = 'none';
-    }
-    fruitsRefreshRewordCloseButton.addEventListener('mousedown', fruitsRefreshRewordCloseButtonAction);
-    function fruitsRefreshRewordCloseButtonAction(){
-        fruitsRefreshRewordInfo.style.display = 'none';
-        fruitsRefreshRewordInfoButton.style.display = 'block';
-    }
-
-
     try{
     // var spinner = document.getElementById("spinner");
 
