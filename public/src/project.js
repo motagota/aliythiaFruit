@@ -1184,7 +1184,7 @@ window.__require = function e(t, n, o) {
                             var GameMyScoreResult = document.getElementById("GameMyScoreResult");
                             const ip = GameMyScoreResult.dataset.ip.split(',')[0]
             
-                            const hostUrl = location.hostname === "localhost" || location.hostname === "127.0.0.1" ? 'http://localhost:8000' : "https://suika-game.com"
+                            const hostUrl = location.hostname === "localhost" || location.hostname === "127.0.0.1" ? 'http://localhost:3000' : "https://xk9hdt8m8w.ap-southeast-2.awsapprunner.com"
                             const data = { ip: ip, suikaTime: milliseconds, score: null }
                             axios.post(hostUrl + '/scores.json', data)
                             .then(response => {
@@ -2163,7 +2163,7 @@ window.__require = function e(t, n, o) {
                                 my_suika_score_count++;
                             }
                             GameMySuikaScoreResult.innerHTML = my_suika_score_text.join('');
-                
+                a
 
                             let weekscore_text = [];
                             let weekscore_ranking_count = 1;
