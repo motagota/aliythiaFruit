@@ -93,7 +93,7 @@ app.get('/', function(request, response){
         root: path.join(__dirname)
     };
 
-    response.sendFile('aliythiaFruitGame.html',options);
+    response.sendFile('aliythiaFruitGame1.html',options);
 });
 
 app.listen(port, () => {
