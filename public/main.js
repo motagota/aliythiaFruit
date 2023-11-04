@@ -117,7 +117,7 @@ window.boot = function() {
     }
 
     var onStart = function() {
-
+debugger;
         cc.loader.downloader._subpackages = settings.subpackages;
 
         cc.view.enableRetina(true);
