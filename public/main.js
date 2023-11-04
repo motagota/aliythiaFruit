@@ -7,7 +7,7 @@ var loadingBool = true;
 var loadingNum = 0;
 
 window.boot = function() {
-
+    debugger;
     var settings = window._CCSettings;
     window._CCSettings = undefined;
 
