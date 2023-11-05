@@ -68,7 +68,7 @@
         </div>
 
         <script type="text/javascript">
-            debugger;
+            
             var preloader;
             var adCompleteFlag = false;
             var resCompleteFlag = false;
@@ -76,6 +76,20 @@
             var adEndComplete = false;
             var resEndComplete = false;
 
+            var getJSON = function(url, callback) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', url, true);
+                xhr.responseType = 'json';
+                xhr.onload = function() {
+                var status = xhr.status;
+                if (status === 200) {
+                    callback(null, xhr.response);
+                } else {
+                    callback(status, xhr.response);
+                }
+            };
+            xhr.send();
+            };
 
             if (true) {
                 window.difficulty = [0, 5];
@@ -93,7 +107,45 @@
                 }
 
             }
+            const hostUrl = location.hostname === "localhost" || location.hostname === "127.0.0.1" ? 'http://localhost:3000' : "https://xk9hdt8m8w.ap-southeast-2.awsapprunner.com"
+            
+refreshScore = function (){
+                getJSON(hostUrl + `/scores/`,
+function(err, data) {
+  if (err !== null) {
+    alert('Something went wrong: ' + err);
+  } else {
+    
+    let table =''
+    data.forEach((score) => {
+        table += `<tr><td>${score.name}</td><td>${score.score}</td></tr>`
+    });   
 
+    document.getElementById("scores_table").innerHTML = table;
+
+  }
+});
+}
+refreshScore()
+
+saveScore = function(){
+
+    
+    let name = document.getElementById("lname").value;
+    let score = document.getElementById("thisScore").innerHTML;
+    
+
+fetch(`/scores/${name}/${score}`, {
+  method: "POST",
+  headers: {'Content-Type': 'application/json'}, 
+  body: JSON.stringify('{}')
+}).then(res => {
+  
+  document.getElementById("score_div").innerHTML = "Score saved ";
+});
+
+    
+}
 
             var loadintT = document.getElementById("loadingText");
             var loadintGif = document.getElementById("loadingImg")
@@ -188,7 +240,7 @@
 
          <script type="text/javascript">
             (function () {
-                debugger;
+                
                 if (typeof VConsole !== 'undefined') {
                     window.vConsole = new VConsole();
                 }
@@ -199,7 +251,8 @@
                 var cocos2d = document.createElement('script');
                 cocos2d.async = true;
                 cocos2d.src = window._CCSettings.debug ? '/public/cocos2d-js.js' : '/public/cocos2d-js-min.js';
-                debugger;
+                
+              
 
                 var engineLoaded = function () {
                     document.body.removeChild(cocos2d);
@@ -215,6 +268,7 @@
    
 
     <div class="side">
+        
         <section class="side-left">
             <h2>
                 Characters
@@ -254,6 +308,18 @@
                         Pumpkin
                     </span></li>
             </ul>
+
+            <section>
+                <h2>High Scores</h2>
+                <div id="scores">
+                    <button type="button" onclick="refreshScore()">Refresh scores</button>
+                    <table id="scores_table">
+                        No High Scores yet
+                    </table>
+
+                </div>
+    
+            </section>
     </section>
 
     <div class="tinder" id="scoreScreen" style="z-index: 999; display: none; ">
@@ -271,17 +337,30 @@
 
     <h2>Score</h2>
 
-    <div class="container" data-ip="124.170.69.40, 172.68.64.204" id='ThisGameScoreResult' style="margin: 0 auto; display: flex;
+    <div class="container" id='ThisGameScoreResult' style="margin: 0 auto; display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             align-content: flex-start;
             justify-content: space-between;">
     </div>
 
+ 
+  
+        <div id="score_div">
+        <label for="lname">Save Your Score:</label>
+        <input type="text" id="lname" name="lname">
+
+        <button type="button" onclick="saveScore()">submit score</button>
+        
+        <br>
+        </div>
+        
+
+    
    
-    <button type="button" id="restartButton"
+    <button type="button" id="restartButton" 
         style='box-shadow: 0px 0px 10px 8px rgba(111, 76, 11, 0.3);position: relative; z-index: 999; border: 3px solid #FFF; background-color: #f99f0a; padding:15px 100px;'
-        class="btn rounded-pill btn-primary btn-lg fa fab fa-solid fa-play"></button>
+        class="btn rounded-pill btn-primary btn-lg fa fab fa-solid fa-play">Restart Game</button>
  
 
  

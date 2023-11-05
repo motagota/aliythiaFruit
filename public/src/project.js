@@ -1188,6 +1188,7 @@ window.__require = function e(t, n, o) {
                             const data = { ip: ip, suikaTime: milliseconds, score: null }
                             axios.post(hostUrl + '/scores.json', data)
                             .then(response => {
+                                alert("response")
                             });
                         }
                     } catch(e) {
@@ -1932,10 +1933,9 @@ window.__require = function e(t, n, o) {
                 var GameEndScoreScreen = document.getElementById("GameEndScoreScreen");
                 var ThisGameScoreResult = document.getElementById("ThisGameScoreResult");
                 let scores_text = [];
-                scores_text.push('<p class="thisScore">' + e.sceneScore.string + '</p>');
+                scores_text.push('<p class="thisScore" id="thisScore">' + e.sceneScore.string + '</p>');
                 ThisGameScoreResult.innerHTML = scores_text.join('');
-                
-                
+                               
               
            
 
@@ -1947,7 +1947,7 @@ window.__require = function e(t, n, o) {
 
                 const hostUrl = location.hostname === "localhost" || location.hostname === "127.0.0.1" ? 'http://localhost:3000' : "https://xk9hdt8m8w.ap-southeast-2.awsapprunner.com"
                 const data = { ip: ip, score: e.sceneScore.string, suikaTime:null }
-                axios.post(hostUrl + '/scores.json', data)
+                axios.post(hostUrl + `/scores/name/{e.sceneScore.string}`, data)
                 .then(response => {
                 });
 

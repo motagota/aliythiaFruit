@@ -1,7 +1,11 @@
 const express = require('express')
+
 const path = require('path');
+
 const app = express()
 const port = 3000
+
+const fs = require('fs'); 
 
 app.use('/public', express.static(path.join(__dirname, 'public')))
 app.use('/public/layer', express.static(path.join(__dirname, 'public/layer')))
@@ -95,6 +99,55 @@ app.get('/', function(request, response){
 
     response.sendFile('aliythiaFruitGame1.html',options);
 });
+
+
+
+  
+const score_path = './scores.json';
+const config = { ip: '192.0.2.1', port: 3000 };
+let scores =[]
+
+
+app.get('/reset', function(request, response){
+    scores =[]
+});
+
+app.get('/scores', function(request, response){
+  
+    scores = JSON.parse(fs.readFileSync("scores.txt", "utf8")); 
+    
+    response.setHeader('Content-Type', 'application/json');
+    response.end(JSON.stringify(scores));
+});
+
+app.post('/scores/:name/:score', function(req, res){
+    console.log(req.params)
+
+    scores = JSON.parse(fs.readFileSync("scores.txt", "utf8")); 
+    score ={}
+    score.name = req.params.name 
+    score.score = req.params.score 
+    scores.push(score)
+    console.log(scores)
+
+    fs.writeFile("scores.txt", JSON.stringify(scores), (err) => { 
+        if (err) 
+            console.log(err); 
+        else { 
+            console.log("File written successfully\n"); 
+            console.log("The written has the following contents:");             
+        } 
+    } );
+
+response = {  
+    scores: scores,  
+    
+};  
+console.log(response);  
+res.end(JSON.stringify(response));  
+
+})
+
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
