@@ -1,1 +1,1 @@
-[]
+[{"name":"gw","score":"1618"},{"name":"2416","score":"2416"},{"name":"CT","score":"2424"},{"name":"Derick","score":"2582"},{"name":"Glass","score":"1558"},{"name":"Grayson","score":"1812"},{"name":"Glass","score":"1566"},{"name":"Evertt","score":"2488"},{"name":"Sunny","score":"1800"},{"name":"Sunny","score":"2786"},{"name":"hypo","score":"1358"},{"name":"Evertt","score":"2530"},{"name":"Orange","score":"1654"},{"name":"Soba","score":"1746"},{"name":"Soba","score":"2194"},{"name":"Grayson","score":"2276"},{"name":"Orange","score":"2354"},{"name":"Gregd","score":"2552"}]

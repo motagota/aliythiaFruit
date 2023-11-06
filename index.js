@@ -115,9 +115,13 @@ app.get('/reset', function(request, response){
 app.get('/scores', function(request, response){
   
     scores = JSON.parse(fs.readFileSync("scores.txt", "utf8")); 
+
+    let sortedscores = scores.sort(
+        (p1, p2) => (p1.score < p2.score) ? 1 : (p1.score > p2.score) ? -1 : 0);
     
+    const slicedArray = sortedscores.slice(0, 10);
     response.setHeader('Content-Type', 'application/json');
-    response.end(JSON.stringify(scores));
+    response.end(JSON.stringify(slicedArray));
 });
 
 app.post('/scores/:name/:score', function(req, res){
