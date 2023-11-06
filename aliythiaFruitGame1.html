@@ -117,8 +117,12 @@ function(err, data) {
   } else {
     
     let table =''
+    let count =1;
     data.forEach((score) => {
-        table += `<tr><td>${score.name}</td><td>${score.score}</td></tr>`
+        
+        document.getElementById(`score_${count}`).innerHTML = `${score.name} - ${score.score}`
+        count++
+
     });   
 
     document.getElementById("scores_table").innerHTML = table;
@@ -313,9 +317,32 @@ fetch(`/scores/${name}/${score}`, {
                 <h2>High Scores</h2>
                 <div id="scores">
                     <button type="button" onclick="refreshScore()">Refresh scores</button>
-                    <table id="scores_table">
-                        No High Scores yet
-                    </table>
+                
+                    <div class="container" data-ip="124.170.69.40, 172.68.146.12" id="GameWeekScoreResult" style="pointer-events: none; margin: 0 auto; display: flex;
+                                flex-direction: row;
+                                flex-wrap: wrap;
+                                align-content: flex-start;
+                                justify-content: space-between; padding-bottom: 30px;">
+                                <li style="pointer-events: none;" class="list-ranking-item">
+                                    <span class="rank_icon rank_1">1</span><img src="/public/res/raw-assets/50/5035266c-8df3-4236-8d82-a375e97a0d9c.png"><div id="score_1"></div></li>
+                                <li style="pointer-events: none;" class="list-ranking-item">
+                                    <span class="rank_icon rank_2">2</span><img src="/public/res/raw-assets/56/564ba620-6a55-4cbe-a5a6-6fa3edd80151.png"><div id="score_2"></div></li>
+                                <li style="pointer-events: none;" class="list-ranking-item">
+                                    <span class="rank_icon rank_3">3</span><img src="/public/res/raw-assets/84/84bc9d40-83d0-480c-b46a-3ef59e603e14.png"><div id="score_3"></div></li>
+                                <li style="pointer-events: none;" class="list-ranking-item-small col-4">
+                                    <span class="rank_icon-small rank_4">4</span><img src="/public/res/raw-assets/5f/5fa0264d-acbf-4a7b-8923-c106ec3b9215.png"><div id="score_4"></div></li>
+                                <li style="pointer-events: none;" class="list-ranking-item-small col-4">
+                                    <span class="rank_icon-small rank_5">5</span><img src="/public/res/raw-assets/66/665a0ec9-6c43-4858-974c-025514f2a0e7.png"><div id="score_5"></div></li>
+                                <li style="pointer-events: none;" class="list-ranking-item-small col-4">
+                                    <span class="rank_icon-small rank_6">6</span><img src="/public/res/raw-assets/03/03c33f55-5932-4ff7-896b-814ba3a8edb8.png"><div id="score_6"></div></li>
+                                <li style="pointer-events: none;" class="list-ranking-item-small col-4">
+                                    <span class="rank_icon-small rank_7">7</span><img src="/public/res/raw-assets/13/132ded82-3e39-4e2e-bc34-fc934870f84c.png"><div id="score_7"></div></li>
+                                <li style="pointer-events: none;" class="list-ranking-item-small col-4"><span class="rank_icon-small rank_8">8</span>
+                                    <img src="/public/res/raw-assets/74/74237057-2880-4e1f-8a78-6d8ef00a1f5f.png"><div id="score_8"></div></li>
+                                <li style="pointer-events: none;" class="list-ranking-item-small col-4">
+                                <span class="rank_icon-small rank_9">9</span>
+                                <img src="/public/res/raw-assets/d0/d0c676e4-0956-4a03-90af-fee028cfabe4.png"><div id="score_9"></div></li>
+                            </div>
 
                 </div>
     

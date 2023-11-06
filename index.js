@@ -1,3 +1,4 @@
+
 const express = require('express')
 
 const path = require('path');
@@ -6,6 +7,7 @@ const app = express()
 const port = 3000
 
 const fs = require('fs'); 
+
 
 app.use('/public', express.static(path.join(__dirname, 'public')))
 app.use('/public/layer', express.static(path.join(__dirname, 'public/layer')))
